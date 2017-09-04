@@ -1,22 +1,21 @@
 #!/usr/bin/env node
 
-var program = require( 'commander' )
-var path = require( 'path' )
-var get = require( '../lib/get' )
+const program = require( 'commander' )
+const path = require( 'path' )
+const get = require( '../lib/get' )
 
-var log = console.log
+const log = console.log
 
 program
     .usage( '<owner/repos/path> [dest]' )
     .parse( process.argv )
 
-var source = program.args[ 0 ]
-var rawName = program.args[ 1 ]
-var dest = ( !rawName || rawName === '.' ) ? './' : rawName
-console.log( dest )
-var clone = program.clone || false
+const source = program.args[ 0 ]
+const rawName = program.args[ 1 ]
+const dest = ( !rawName || rawName === '.' ) ? './' : rawName
+const clone = program.clone || false
 
-var info = parseSource( source );
+const info = parseSource( source );
 
 if ( !info ) {
     log( 'Error: parameter is illegal.' );
@@ -29,7 +28,7 @@ if ( !info ) {
 get( info.owner, info.repo,  normalize( info.path ), normalize( dest ) )
 
 function parseSource( path ) {
-    var result;
+    let result;
 
     if ( !( result = /^((\S+):)?([\w-]+)\/([\w-]+)(\/([\w-\/]*))?(#(\S+))?$/.exec( path ) ) ) return null;
 
