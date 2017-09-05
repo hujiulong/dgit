@@ -35,9 +35,9 @@ function parseSource( source ) {
 
     if ( !( result = /^((\S+):)?([\w-]+)\/([\w-]+)(\/([\w-\/]*))?(@(\S+))?$/.exec( source ) ) ) return null
 
-    let path = result[ 6 ] || '/'
+    let path = result[ 6 ] || ''
 
-    if ( path && path !== '/' && path.charAt( path.length - 1 ) === '/' ) path = path.substring( 0, path.length - 1 )   // src/ -> src
+    if ( path && path !== '' && path.charAt( path.length - 1 ) === '/' ) path = path.substring( 0, path.length - 1 )   // src/ -> src
 
     return {
         origin: result[ 2 ] || 'github',

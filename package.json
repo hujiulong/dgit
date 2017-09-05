@@ -1,7 +1,7 @@
 {
   "name": "dgit",
-  "version": "0.0.2",
-  "description": "A simple CLI for downloading git repository files.",
+  "version": "0.0.3",
+  "description": "A simple CLI for download git repository files.",
   "bin": {
     "dgit": "bin/dgit.js"
   },
@@ -13,6 +13,7 @@
   "dependencies": {
     "commander": "^2.11.0",
     "fs-extra": "^4.0.1",
+    "ora": "^1.3.0",
     "request": "^2.81.0"
   }
 }
