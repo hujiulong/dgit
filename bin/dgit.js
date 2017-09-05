@@ -33,7 +33,7 @@ function parseSource( source ) {
 
     let result
 
-    if ( !( result = /^((\S+):)?([\w-]+)\/([\w-]+)(\/([\w-\/]*))?(@(\S+))?$/.exec( source ) ) ) return null
+    if ( !( result = /^((\S+):)?([\w-]+)\/([\w-\.]+)(\/([\w-\/]*))?(@(\S+))?$/.exec( source ) ) ) return null
 
     let path = result[ 6 ] || ''
 
