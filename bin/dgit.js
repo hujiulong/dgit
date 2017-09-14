@@ -8,12 +8,12 @@ const github = require( '../lib/github' )
 const log = console.log
 
 program
-    .usage( '<owner/repo/path> [dest]' )
+    .usage( '<owner/repo@ref/path> [dest]' )
     .parse( process.argv )
 
 const source = program.args[ 0 ]
 const rawName = program.args[ 1 ]
-const dest = ( !rawName || rawName === '.' ) ? './' : rawName
+const dest = ( !rawName || rawName === '.' ) ? '' : rawName
 const clone = program.clone || false
 
 const info = parseSource( source )
@@ -22,7 +22,7 @@ if ( !info ) {
     log( 'Error: parameter is illegal.' )
     log()
     log( 'Usage:' )
-    log( '    dgit <owner/repo/path> [dest]' )
+    log( '    dgit <owner/repo@ref/path> [dest]' )
     log()
     return
 }
@@ -33,7 +33,7 @@ function parseSource( source ) {
 
     let result
 
-    if ( !( result = /^((\S+):)?([\w-]+)\/([\w-\.]+)(\/([\w-\/]*))?(@(\S+))?$/.exec( source ) ) ) return null
+    if ( !( result = /^((\S+):)?([\w-]+)\/([\w-\.]+)(\/(\S*))?(@(\S+))?$/.exec( source ) ) ) return null
 
     let path = result[ 6 ] || ''
 
