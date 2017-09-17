@@ -8,40 +8,52 @@ git会记录一个项目所有的历史修改，所以通常会很大。有时�
 2. 下载一个git仓库的某个目录或某个文件
 3. 下载时可以指定分支/tag/commit hash
 
-## Install
-可以通过npm安装
+## 安装
+可以通过npm全局安装
 (如果速度较慢可以使用淘宝提供的镜像)
 ```
 npm install dgit -g
 ```
 如果你使用mac，需要在命令前面加上`sudo`
 
-## Usage
-使用方式（用下载`react`作为例子）
-#### 1.下载整个项目
+安装完以后，就可以使用`dgit`命令了
+
+## 使用方式
+
+用下载`react`作为例子
+
+##### 1.下载整个项目
 ```
 dgit facebook/react
 ```
 现在在你当前所处的目录下就会多一个`react`目录，里面包含`react`项目的所有文件
 
-#### 2.下载react的src目录
+##### 2.下载react的src目录
 ```
 dgit facebook/react/src
 ```
 现在在你当前所处的目录下就会多一个`src`目录，里面包含`react/src`的所有文件
 
-#### 3.指定分支
+##### 3.指定分支
 使用参数`-r`或`--ref`可以指定`branch`，`tag`或`commit hash`
 ```
 dgit facebook/react/css -r gh-pages
 ```
 
-#### 4.指定tag
+##### 4.指定tag
 ```
 dgit facebook/react/src -r v15.6.1
 ```
 
-#### 5.指定commit hash
+##### 5.指定commit hash
 ```
 dgit facebook/react/src -r b5ac963
 ```
+
+##### 6.指定安放文件的目录
+```
+dgit facebook/react/src ./download
+```
+
+## TODO
+目前暂时只支持托管到github上的公开仓库，计划支持gitlab,bitbucket以及国内的码云
