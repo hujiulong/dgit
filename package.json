@@ -1,6 +1,6 @@
 {
   "name": "dgit",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "description": "A simple CLI for download git repository files.",
   "bin": {
     "dgit": "bin/dgit.js"
